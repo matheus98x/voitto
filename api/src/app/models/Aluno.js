@@ -19,6 +19,16 @@ class Aluno extends Model {
 
     return this;
   }
+
+  
+
+  async destroy(sequelize, id){
+    Model.destroy('id LIKE "' + id +'" ').success(function(){
+      console.log('usuario removido');
+    });
+  }
+  
 }
+
 
 export default Aluno;

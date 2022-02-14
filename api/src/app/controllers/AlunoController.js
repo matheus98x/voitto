@@ -4,6 +4,8 @@ class AlunoController {
   async index(req, res) {
     const alunos = await Aluno.findAll()
     res.json(alunos);
+
+    
   }
 
   async read(req, res) {
@@ -19,7 +21,12 @@ class AlunoController {
   }
 
   async delete(req, res) {
-    // TODO
+    Aluno.destroy({
+      where:{
+        id: id
+      }
+    });
+    
   }
 }
 
