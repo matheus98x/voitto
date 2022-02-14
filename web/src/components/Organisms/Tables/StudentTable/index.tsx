@@ -16,6 +16,11 @@ import { toast } from 'react-toastify';
 import useWindowSize from '@/hooks/useWindowSize';
 import { Button } from '@material-ui/core';
 import { buttonTheme } from '@/utils/Config';
+import App from 'next/app';
+import { getRedirectStatus } from 'next/dist/lib/load-custom-routes';
+import AlunoController from '../../../../../../api/src/app/controllers/AlunoController';
+import { studentsText } from '@/constants/Texts';
+import Aluno from '../../../../../../api/src/app/models/Aluno';
 
 const StudentTable: React.FC = () => {
   const [students, setStudents] = useState<Student[]>([]);
@@ -41,12 +46,14 @@ const StudentTable: React.FC = () => {
       });
   }, []);
 
+
+  
   const openCreateStudentModal = (): void => {
     alert('Abrir modal de criação de aluno');
   };
 
   const openDeleteStudentModal = (id: number): void => {
-    alert(`Abrir modal de criação de aluno ${id}`);
+    AlunoController.delete(id);
   };
 
   return (

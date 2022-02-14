@@ -14,15 +14,28 @@ const LogicTestForm: React.FC = () => {
   const [results, setResults] = useState<number | null>(null);
 
   const submit = (): void => {
-    if (!n) {
-      toast('Preencha o campo necessário', {
-        position: toast.POSITION.BOTTOM_CENTER,
+    if (n == 0) {
+      toast('O número deve ser diferente de 0', {
+        position: toast.POSITION.BOTTOM_RIGHT,
         type: 'error',
         autoClose: 2000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
+        progress: undefined
+      });
+
+    return;
+  }else if (!n) {
+      toast('Preencha o campo necessário', {
+        position: toast.POSITION.BOTTOM_CENTER,
+        type: 'error',
+        autoClose: 6000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: false,
         progress: undefined
       });
 
